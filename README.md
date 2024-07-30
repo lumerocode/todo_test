@@ -6,7 +6,7 @@
 - Colocar en la terminal npm run dev
 
 ## Link de la página desplegada
-[https://todo-list-project.netlify.app/](https://todo-list-project.netlify.app/)
+[https://todo-list-project-olaclick.netlify.app//](https://todo-list-project-olaclick.netlify.app//)
 
 ## Herramientas que se utilizaron para el proyecto
 - Vue 3
