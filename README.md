@@ -2,7 +2,7 @@
 
 ## Para correr el proyecto
 - Descargar el proyecto
-- Colocar en la terminal npm i, para instalar la carpeta no_modules
+- Colocar en la terminal npm i, para instalar la carpeta node_modules
 - Colocar en la terminal npm run dev
 
 ## Link de la página desplegada
