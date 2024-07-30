@@ -1,5 +1,5 @@
 <template>
-  <div class="todo-modal-overlay" @click="handleOverlayClick">
+  <div class="todo-modal-overlay">
     <div class="todo-modal-content" @click.stop>
       <h3>{{ isEditing ? 'Edit TODO' : 'Add TODO' }}</h3>
       <form @submit.prevent="saveTodo">
@@ -31,13 +31,13 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, watch } from 'vue';
+import { defineComponent, ref, watch, PropType } from 'vue';
 
 export default defineComponent({
   name: 'TodoModal',
   props: {
     todo: {
-      type: Object,
+      type: Object as PropType<{ id?: number; text: string; status: string } | null>,
       default: () => null
     }
   },
