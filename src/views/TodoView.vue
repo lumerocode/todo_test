@@ -17,15 +17,6 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
-.todo-view {
-  padding: 1rem;
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-h2 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-}
+<style scoped lang="scss">
+@import '../styles/components/TodoView.scss';
 </style>

@@ -1,8 +1,10 @@
 <template>
   <div class="todo-item">
     <div class="todo-item__left">
-      <font-awesome-icon icon="check" />
-      <span :class="todo.status">{{ todo.text }}</span>
+      <div class="btn-check">
+        <font-awesome-icon icon="check"/>
+      </div>
+      <span :class="[todo.status, { 'done': todo.status === 'DONE' }]">{{ todo.text }}</span>
     </div>
     <div class="todo-item__right"> 
       <select v-model="todo.status">
@@ -49,53 +51,5 @@ export default defineComponent({
 </script>
 
 <style scoped lang="scss">
-.todo-item {
-  width: 600px;
-  padding: 12px 20px;
-  display: flex;
-  align-items: center;
-  border-radius: 12px;
-  border: 1px solid #E0E0E0;
-  background-color: #FFFFFF;
-  justify-content: space-between;
-
-  &__left {
-    display: flex;
-    column-gap: 1rem;
-    align-items: center;
-
-    span {
-      font-size: 16px;
-    }
-  }
-
-  &__right {
-    display: flex;
-    column-gap: 2rem;
-    align-items: center;
-
-    select {
-      background-color: #EBF1FF;
-      font-family: Arial, sans-serif;
-      border-radius: 4px;
-      width: 130px;
-      height: 30px;
-      font-size: 16px;
-      border: 1px solid #E0E0E0;
-    }
-
-    .btn-edit, .btn-trash {
-      svg {
-        color: #0074FF;
-      }
-    }
-
-    .btn-trash:hover {
-      svg {
-        color: red;
-      }
-    }
-
-  }
-}
+@import '../styles/components/TodoItem.scss';
 </style>

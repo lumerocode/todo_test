@@ -22,7 +22,6 @@ export default defineComponent({
 </script>
 
 <style scoped>
-
 #app {
   font-family: Arial, sans-serif;
   text-align: center;
@@ -33,20 +32,9 @@ export default defineComponent({
   flex-direction: column;
 }
 
-body {
-  margin: 0;
-}
-
 header {
   background-color: #0074FF;
   color: white;
   padding: 1rem;
-}
-
-footer {
-  background-color: #0074FF;
-  color: white;
-  padding: 1rem;
-  margin-top: auto;
 }
 </style>

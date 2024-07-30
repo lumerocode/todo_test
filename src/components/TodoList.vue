@@ -1,5 +1,6 @@
 <template>
   <div class="todo-list">
+    <p v-if="todos.length === 0">Start creating your list items</p>
     <TodoItem
       v-for="todo in todos"
       :key="todo.id"
@@ -8,12 +9,12 @@
       @delete="deleteTodo"
       @update-status="updateTodoStatus"
     />
-    <!-- Modal para agregar TODO -->
-    <TodoModal v-if="showAddTodoModal" @close="showAddTodoModal = false" @save="addTodo" />
-    <!-- Modal para confirmación de eliminación -->
+    <!-- Modal to add TODO -->
+    <TodoModal v-if="showAddTodoModal" :todo="todoToEdit" @close="showAddTodoModal = false" @save="addTodo" />
+    <!-- Modal to confirm deletion -->
     <ConfirmModal v-if="showConfirmModal" @confirm="confirmDelete" @cancel="showConfirmModal = false" />
   </div>
-  <button @click="showAddTodoModal = true">+</button>
+  <button class="btn-add" @click="showAddTodoModal = true">+</button>
 </template>
 
 <script lang="ts">
@@ -29,9 +30,10 @@ export default defineComponent({
     const todos = ref(todoStore.todos);
     const showAddTodoModal = ref(false);
     const showConfirmModal = ref(false);
+    const todoToEdit = ref<{ id: number; text: string; status: string } | null>(null);
     const todoToDelete = ref<{ id: number } | null>(null);
 
-    // Cargar TODOs desde localStorage al montar el componente
+    // Load TODOs from localStorage when mounting component
     onMounted(() => {
       const savedTodos = localStorage.getItem('todos');
       if (savedTodos) {
@@ -39,18 +41,26 @@ export default defineComponent({
       }
     });
 
-    // Guardar TODOs en localStorage cada vez que cambien
+    // Save TODO in localStorage every time they change
     watch(todos, (newTodos) => {
       localStorage.setItem('todos', JSON.stringify(newTodos));
     }, { deep: true });
 
-    function addTodo(newTodo: { text: string; status: string }) {
-      todoStore.addTodo(newTodo);
+    function addTodo(newTodo: { id?: number; text: string; status: string }) {
+      if (todoToEdit.value) {
+        // Edit existing TODO
+        todoStore.editTodo({ ...todoToEdit.value, ...newTodo });
+      } else {
+        // Add new TODO
+        todoStore.addTodo(newTodo);
+      }
       showAddTodoModal.value = false;
+      resetTodoModal()
     }
 
     function editTodo(todo: { id: number; text: string; status: string }) {
-      todoStore.editTodo(todo);
+      todoToEdit.value = todo;
+      showAddTodoModal.value = true;
     }
 
     function deleteTodo(todo: { id: number }) {
@@ -73,6 +83,10 @@ export default defineComponent({
       }
     }
 
+    function resetTodoModal() {
+      todoToEdit.value = null;
+    }
+
     return {
       todos,
       addTodo,
@@ -81,41 +95,14 @@ export default defineComponent({
       showAddTodoModal,
       showConfirmModal,
       confirmDelete,
-      updateTodoStatus
+      updateTodoStatus,
+      todoToEdit,
+      resetTodoModal,
     };
   }
 });
 </script>
 
 <style scoped lang="scss">
-  .todo-list {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    row-gap: 0.5rem;
-    justify-content: center;
-  }
-
-  button {
-    align-items: center;
-    border: none;
-    border-radius: 50%;
-    bottom: 24px;
-    box-shadow: 0 5px 25px rgba(0, 116, 255, 0.5);
-    color: #fafafa;
-    cursor: pointer;
-    display: flex;
-    font-size: 50px;
-    font-weight: 700;
-    height: 64px;
-    justify-content: center;
-    position: fixed;
-    right: 24px;
-    -webkit-transform: rotate(0);
-    transform: rotate(0);
-    transition: .3s ease;
-    width: 64px;
-    z-index: 1;
-    background-color: #0074FF;
-  }
+@import '../styles/components/TodoList.scss';
 </style>

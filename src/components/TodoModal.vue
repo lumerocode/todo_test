@@ -4,12 +4,12 @@
       <h3>{{ isEditing ? 'Edit TODO' : 'Add TODO' }}</h3>
       <form @submit.prevent="saveTodo">
         <div class="form-group">
-          <label for="todo-text">TODO Text:</label>
+          <label for="todo-text">Name:</label>
           <input
             id="todo-text"
             v-model="todoText"
             type="text"
-            placeholder="Enter TODO text"
+            placeholder="Enter TODO name"
             required
           />
         </div>
@@ -77,6 +77,11 @@ export default defineComponent({
       if (newTodo) {
         todoText.value = newTodo.text;
         todoStatus.value = newTodo.status;
+        isEditing.value = true;
+      } else {
+        todoText.value = '';
+        todoStatus.value = 'PENDING';
+        isEditing.value = false;
       }
     });
 
@@ -91,64 +96,6 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
-.todo-modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.todo-modal-content {
-  background: white;
-  padding: 1rem;
-  border-radius: 5px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-  width: 100%;
-  max-width: 500px;
-}
-
-.form-group {
-  margin-bottom: 1rem;
-}
-
-.form-group label {
-  display: block;
-  margin-bottom: 0.5rem;
-}
-
-.form-group input,
-.form-group select {
-  width: 100%;
-  padding: 0.5rem;
-  border: 1px solid #ddd;
-  border-radius: 3px;
-}
-
-.todo-modal-buttons {
-  display: flex;
-  justify-content: flex-end;
-  gap: 0.5rem;
-}
-
-.todo-modal-buttons button {
-  padding: 0.5rem 1rem;
-  border: none;
-  border-radius: 3px;
-  cursor: pointer;
-}
-
-.todo-modal-buttons button:first-child {
-  background: #42b983;
-  color: white;
-}
-
-.todo-modal-buttons button:last-child {
-  background: #ccc;
-}
+<style scoped lang="scss">
+@import '../styles/components/TodoModal.scss';
 </style>

@@ -1,0 +1,60 @@
+.todo-item {
+    width: 600px;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    border-radius: 12px;
+    border: 1px solid #E0E0E0;
+    background-color: #FFFFFF;
+    justify-content: space-between;
+  
+    &__left {
+      display: flex;
+      column-gap: 1rem;
+      align-items: center;
+  
+      .btn-check {
+        color: #0074FF;
+      }
+  
+      span {
+        font-size: 16px;
+      }
+  
+      .done {
+        text-decoration: line-through;
+        color: #0074FF;
+      }
+    }
+  
+    &__right {
+      display: flex;
+      column-gap: 2rem;
+      align-items: center;
+  
+      select {
+        background-color: #EBF1FF;
+        font-family: Arial, sans-serif;
+        border-radius: 4px;
+        width: 130px;
+        height: 30px;
+        font-size: 16px;
+        border: 1px solid #E0E0E0;
+        cursor: pointer;
+      }
+  
+      .btn-edit, .btn-trash {
+        svg {
+          color: #0074FF;
+          cursor: pointer;
+        }
+      }
+  
+      .btn-trash:hover {
+        svg {
+          color: red;
+        }
+      }
+  
+    }
+  }

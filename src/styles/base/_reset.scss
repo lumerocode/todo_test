@@ -1,13 +1,17 @@
 /* ===================== AJUSTES GENERALES ===================== */
 * {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    box-sizing: border-box;
-    text-decoration: none; 
-    list-style: none;
-  }
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+  text-decoration: none; 
+  list-style: none;
+}
 
-  body {
-    font-family: 'Open Sans', sans-serif;
-  }
+body {
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+}
+
+// Global variables
+$primary-color: #0074FF;
+$secondary-color: #EBF1FF;
