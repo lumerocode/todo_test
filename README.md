@@ -1,5 +1,18 @@
-# Vue 3 + TypeScript + Vite
+# Project Test 
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+## Para correr el proyecto
+- Descargar el proyecto
+- Colocar en la terminal npm i, para instalar la carpeta no_modules
+- Colocar en la terminal npm run dev
 
-Learn more about the recommended Project Setup and IDE Support in the [Vue Docs TypeScript Guide](https://vuejs.org/guide/typescript/overview.html#project-setup).
+## Link de la página desplegada
+[https://todo-list-project.netlify.app/](https://todo-list-project.netlify.app/)
+
+## Herramientas que se utilizaron para el proyecto
+- Vue 3
+- Typescript
+- Sass
+
+## Sobre el proyecto
+Se implementó un TODOLIST, donde se pudiera agregar, editar y eliminar una lista de items y a su vez que éstas tengan 3 tipos de estados: PENDING, IN PROGRESS y DONE.
+Además que se guarden en localstorage para que al momento de recargar la página, los items agregados no se perdieran.
