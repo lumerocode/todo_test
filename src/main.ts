@@ -1,10 +1,11 @@
 import { createApp } from 'vue';
 import App from './App.vue';
-import vuetify from './plugins/vuetify';
-import 'vuetify/styles';
-import '@mdi/font/css/materialdesignicons.css';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faEdit, faTrash, faCheck } from '@fortawesome/free-solid-svg-icons';
 
+library.add(faEdit, faTrash, faCheck);
 
 createApp(App)
-  .use(vuetify)
+  .component('font-awesome-icon', FontAwesomeIcon)
   .mount('#app');
