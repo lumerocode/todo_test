@@ -31,5 +31,5 @@ export default defineComponent({
 </script>
 
 <style scoped lang="scss">
-@import '../styles/components/confirmModal.scss';
+@import '../styles/components/ConfirmModal.scss';
 </style>
